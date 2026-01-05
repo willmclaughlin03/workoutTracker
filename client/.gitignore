@@ -11,7 +11,7 @@ package-lock.json
 package.json
 vite.config.js
 
-node_modules
+node_modules/
 dist
 dist-ssr
 *.local
