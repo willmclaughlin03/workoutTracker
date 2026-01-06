@@ -1,0 +1,11 @@
+import { createClient } from "@supabase/supabase-js";
+import "dotenv/config";
+
+const supabase_key = process.env.SUPABASE_KEY;
+const supabase_url = process.env.SUPABASE_URL;
+
+if (!supabase_key || !supabase_url){
+    throw new Error("Improper Supabase Key or URL found");
+}
+
+export const supabase = createClient(supabase_key,supabase_url)
