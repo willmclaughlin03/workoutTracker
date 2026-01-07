@@ -54,10 +54,6 @@ export const getWorkoutDetail = async(req, res, next) => {
                 })
             }
 
-            if(!data || data.length === 0){
-                return res.status(404).json({ message: "No workout found"});
-            }
-
             res.status(200).json(data)
         } catch (err) {
             next(err)
