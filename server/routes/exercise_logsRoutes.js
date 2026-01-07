@@ -16,6 +16,7 @@ router.post(
     body("sets").isInt({ min: 1 }).withMessage("Set number must be positive"),
     body("reps").isInt( {min: 1}).withMessage("Set number must be positive"),
     body("weight").isNumeric().withMessage("Weight has to be a number"),
+    validateRequest,
     asyncHandler(createExerciseLogs)
 )
 
@@ -25,12 +26,14 @@ router.patch(
     body("sets").optional().isInt({min : 1}),
     body("reps").optional().isInt({min: 1}),
     body("weight").optional().inNumeric(),
+    validateRequest,
     asyncHandler(updateExerciseLogs)
 )
 
 router.delete(
     "/logs/:id",
     param("id").isUUID().withMessage("Invalid Log ID"),
+    validateRequest,
     asyncHandler(deleteExerciseLog)
 )
 
