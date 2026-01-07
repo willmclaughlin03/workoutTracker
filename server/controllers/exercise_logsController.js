@@ -1,4 +1,4 @@
-import {supabase} from "@supabase/supabase-js";
+import { supabase } from "../supabase.js";
 const tableName = "exercise_logs";
 
 export const createExerciseLogs = async (req, res, next) => {

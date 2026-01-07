@@ -1,8 +1,8 @@
 import express from "express"
-import * as workoutController from "../controllers/workoutController";
+import * as workoutController from "../controllers/workoutController.js";
 import asyncHandler from "express-async-handler"
-import {param, body} from 'express-validatior'
-import { validateRequest } from "../middlewares/validateRequest";
+import {param, body} from 'express-validator'
+import { validateRequest } from "../middlewares/validateRequest.js";
 
 const router = express.Router();
 

@@ -1,9 +1,9 @@
-import { errorHandler } from "./middlewares/errorHandler";
+import { errorHandler } from "./middlewares/errorHandler.js";
 import express from "express"
 import cors from "cors"
 
-import workoutRoutes from "./routes/workoutRoutes"
-import exerciseLogRoutes from "./routes/exercise_logsRoutes"
+import workoutRoutes from "./routes/workoutRoutes.js"
+import exerciseLogRoutes from "./routes/exercise_logsRoutes.js"
 
 
 const app = express();

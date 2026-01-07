@@ -1,8 +1,8 @@
 import express from "express"
-import * as exercise_logsController from "../controllers/exercise_logsController"
+import * as exercise_logsController from "../controllers/exercise_logsController.js"
 import asyncHandler from "express-async-handler"
 import {param, body} from "express-validator"
-import { validateRequest } from "../middlewares/validateRequest"
+import { validateRequest } from "../middlewares/validateRequest.js"
 
 const router = express.Router();
 
