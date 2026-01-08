@@ -6,7 +6,7 @@ import { validateRequest } from "../middlewares/validateRequest.js";
 
 const router = express.Router();
 
-router.get('/', asyncHandler(getAllWorkouts))
+router.get('/', asyncHandler(workoutController.getAllWorkouts))
 
 router.get("/:id",
     param('id').isUUID().withMessage("Invalid workout ID"),
