@@ -21,7 +21,7 @@ router.patch(
     param("id").isUUID().withMessage("Invalid Log ID"),
     body("sets").optional().isInt({min : 1}),
     body("reps").optional().isInt({min: 1}),
-    body("weight").optional().inNumeric(),
+    body("weight").optional().isNumeric(),
     validateRequest,
     asyncHandler(exercise_logsController.updateExerciseLogs)
 )

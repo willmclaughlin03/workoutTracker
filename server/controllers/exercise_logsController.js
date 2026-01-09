@@ -2,9 +2,16 @@ import { supabase } from "../supabase.js";
 const tableName = "exercise_logs";
 
 export const createExerciseLogs = async (req, res, next) => {
+    const { workoutId } = req.params;
     try {
         const {data, error} = await supabase.from(tableName)
-        .insert(req.body).select();
+        .insert({
+            workout_id: workoutID,
+            exercise_name: req.body.exercise_name,
+            sets: req.body.sets,
+            reps: req.body.reps,
+            weight: req.body.weight
+        }).select();
 
         if(error){
             return res.status(400).json({

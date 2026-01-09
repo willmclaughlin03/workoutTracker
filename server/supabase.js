@@ -3,7 +3,7 @@ import "dotenv/config";
 
 const supabase_url = process.env.SUPABASE_URL;
 const supabase_key = process.env.SUPABASE_KEY;
-const PORT = process.env.PORT || 5000;
+
 
 
 if (!supabase_key || !supabase_url){

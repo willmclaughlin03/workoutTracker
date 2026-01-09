@@ -4,7 +4,13 @@ const tableName = "workouts"
 export const createWorkout = async (req, res, next) => {
         try {
             const {data, error} = await supabase
-            .from(tableName).insert(req.body)
+            .from(tableName)
+            .insert({
+                title: req.body.title,
+                date: req.body.date,
+                // test this line later in the process while building frontend, could be an issue
+                user_id: req.body.user_id 
+            })
             .select();
 
             if(error){

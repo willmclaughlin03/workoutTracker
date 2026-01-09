@@ -5,6 +5,7 @@ import cors from "cors"
 import workoutRoutes from "./routes/workoutRoutes.js"
 import exerciseLogRoutes from "./routes/exercise_logsRoutes.js"
 
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -17,10 +18,16 @@ app.use("/api/workouts", workoutRoutes)
 app.use("/api", exerciseLogRoutes)
 
 app.use((req,res) => {
-    res.statusCode(404).json({
+    res.status(404).json({
         message: `Route ${req.originalUrl} not found`
     })
 })
 app.use(errorHandler)
+
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+})
+
 
 export default app;

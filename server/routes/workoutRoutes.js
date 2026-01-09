@@ -27,7 +27,7 @@ router.put("/:id",
     asyncHandler(workoutController.updateWorkout))
 
 
-router.delete(":id", 
+router.delete("/:id", 
     param("id").isUUID().withMessage("Invalid workout ID"),
     validateRequest,
     asyncHandler(workoutController.deleteWorkout))
