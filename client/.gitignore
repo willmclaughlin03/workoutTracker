@@ -12,6 +12,9 @@ package.json
 vite.config.js
 eslint.config.js
 
+.env
+
+
 node_modules/
 dist
 dist-ssr
