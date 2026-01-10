@@ -9,7 +9,7 @@ export const createWorkout = async (req, res, next) => {
                 title: req.body.title,
                 date: req.body.date,
                 // test this line later in the process while building frontend, could be an issue
-                user_id: req.body.user_id 
+                user_id: req.user.sub
             })
             .select();
 

@@ -6,8 +6,16 @@ import { validateRequest } from "../middlewares/validateRequest.js"
 
 const router = express.Router();
 
+
+router.get(
+    "/:workoutId/logs",
+    param("workoutId").isUUID.withMessage("Invalid workout ID"),
+        validateRequest,
+        asyncHandler(exercise_logsController.getExerciseLogs)
+)
+
 router.post(
-    "/workouts/:workoutId/logs",
+    "/:workoutId/logs",
     param("workoutId").isUUID().withMessage("Invalid workout ID"),
     body("sets").isInt({ min: 1 }).withMessage("Set number must be positive"),
     body("reps").isInt( {min: 1}).withMessage("Set number must be positive"),

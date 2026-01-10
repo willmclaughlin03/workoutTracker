@@ -1,8 +1,31 @@
 import { supabase } from "../supabase.js";
 const tableName = "exercise_logs";
 
+export const getExerciseLogs = async (req, res, next) => {
+    const { workoutID } = req.params;
+
+    try {
+        const {data, error} = await supabase.from(tableName)
+        .select("*")
+        .eq("id", workoutID)
+        .single()
+
+        if(error){
+            return res.status(400).json({
+                message: "Exercise logs cannot be found",
+                details: error.message || error
+            })
+        }
+
+        res.status(200).json(data)
+    } catch (err) {
+        next(err)
+    }
+}
+
+
 export const createExerciseLogs = async (req, res, next) => {
-    const { workoutId } = req.params;
+    const { workoutID } = req.params;
     try {
         const {data, error} = await supabase.from(tableName)
         .insert({
@@ -10,7 +33,8 @@ export const createExerciseLogs = async (req, res, next) => {
             exercise_name: req.body.exercise_name,
             sets: req.body.sets,
             reps: req.body.reps,
-            weight: req.body.weight
+            weight: req.body.weight,
+            muscle_group: req.body.muscle_group
         }).select();
 
         if(error){
