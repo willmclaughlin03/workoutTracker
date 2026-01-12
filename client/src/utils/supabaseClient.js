@@ -8,4 +8,10 @@ if (!supabase_front_key || !supabase_url){
     throw new Error("Improper Supabase Key or URL found");
 }
 
-export const supabase = createClient(supabase_url,supabase_front_key)
+export const supabase = createClient(supabase_url,supabase_front_key, {
+    auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+    }
+})
