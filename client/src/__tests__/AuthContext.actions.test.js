@@ -1,11 +1,10 @@
 import React from 'react';
 import { renderHook, act } from '@testing-library/react';
 
-// Mock BEFORE importing
+//mock before imports
 jest.mock('../utils/supabaseClient.js');
 jest.mock('../api/auth.js');
 
-// NOW import
 import { AuthProvider, useAuth } from '../context/authContext.js';
 import { supabase } from '../utils/supabaseClient.js';
 import { signIn, signUp, signOut } from '../api/auth.js';
