@@ -133,7 +133,7 @@ describe('AuthContext actions', () => {
     expect(result.current.error).toBe('Email already registered');
   });
 
-  test('multiple failed login attempts accumulate errors', async () => {
+  test('subsequent login failures overwrite previous errors', async () => {
     signIn
       .mockRejectedValueOnce(new Error('Wrong password'))
       .mockRejectedValueOnce(new Error('Account locked'));
