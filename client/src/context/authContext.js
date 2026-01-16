@@ -81,6 +81,20 @@ export const AuthProvider = ({ children }) => {
 
         return () => listener.subscription.unsubscribe();
     }, []);
+
+    const [tokenExpiry, setTokenExpiry] = useState(null);
+
+    useEffect(() => {
+        const checkExpiry = async () => {
+            const {data : { session } } = await supabase.auth.getSession()
+            if (session?.expires_at) {
+                setTokenExpiry(session.expires_at)
+            }
+        }
+        checkExpiry()
+    }, [session])
+
+
     // uses authJS supabase calls for login, then sets reducer state
     const login = async (email, password) => {
         dispatch({ type: 'SET_LOADING', payload : true});
